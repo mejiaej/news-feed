@@ -16,6 +16,7 @@ const NewsFeed = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    // get the posts from the API
     const fetchData = async () => {
       const postsResult = await getPosts();
       setPosts(postsResult);
@@ -26,7 +27,7 @@ const NewsFeed = () => {
   return (
     <div className={classes.container}>
       {posts.map(({ id, title, body }) => (
-        <Post id={id} title={title} body={body} />
+        <Post key={id} id={id} title={title} body={body} />
       ))}
     </div>
   );

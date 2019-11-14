@@ -11,6 +11,7 @@ import {
   IconButton
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Comments from "./Comments";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Post = ({ title, body }) => {
+const Post = ({ id, title, body }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
 
@@ -56,11 +57,13 @@ const Post = ({ title, body }) => {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
+      <Comments postId={id} expanded={expanded} />
     </Card>
   );
 };
 
 Post.propTypes = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string,
 }
